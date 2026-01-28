@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(tree:*)",
+      "Bash(python -c:*)",
+      "Bash(python3:*)",
+      "Bash(pdm run python:*)",
+      "Bash(PYTHONPATH=src python3:*)",
+      "Bash(tau2 run:*)",
+      "Bash(pytest:*)",
+      "Bash(PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python -m pytest:*)",
+      "Bash(python:*)",
+      "Bash(find:*)"
+    ]
+  }
+}

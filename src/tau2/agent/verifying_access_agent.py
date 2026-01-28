@@ -66,6 +66,7 @@ class VerifyingAccessAgent(LLMAgent):
         return AssistantMessage(
             role="assistant",
             content=None,
+            cost=0,  # Synthetic message, no LLM API cost
             tool_calls=[
                 ToolCall(
                     id=f"verify_{uuid.uuid4().hex[:8]}",

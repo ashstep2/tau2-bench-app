@@ -1,3 +1,6 @@
+# Local notes (not pushed to remote)
+local/
+
 *.tmp
 .DS_Store
 tmp.*
