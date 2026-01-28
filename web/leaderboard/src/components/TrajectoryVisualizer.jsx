@@ -115,7 +115,11 @@ const TrajectoryVisualizer = () => {
       setError(null)
       
       const submissionDir = submission.submissionDir
-      const domains = ['airline', 'retail', 'telecom']
+      // Only check for domains that exist in submission results, or fall back to standard domains
+      const standardDomains = ['airline', 'retail', 'telecom']
+      const submissionDomains = submission.results ? Object.keys(submission.results) : []
+      // If submission has specific domains in results, only use those; otherwise use standard
+      const domains = submissionDomains.length > 0 ? submissionDomains : standardDomains
       const trajectories = []
       
       // Map of exact trajectory file patterns based on actual file structure
@@ -159,6 +163,7 @@ const TrajectoryVisualizer = () => {
       if (patterns.length === 0) {
         // Try common naming patterns that might be used
         patterns = [
+          `{domain}.json`,
           `{domain}_llm_agent_${submission.model_name}_user_simulator_gpt-4.1-2025-04-14.json`,
           `${submission.model_name}_{domain}_default_gpt-4.1-2025-04-14_4trials.json`,
           `{domain}_${submission.model_name}_user_simulator_gpt-4.1-2025-04-14.json`
@@ -198,10 +203,11 @@ const TrajectoryVisualizer = () => {
   }
 
   // Available domains for task exploration
-  const domains = [
+  const domainsList = [
     { name: 'Airline', id: 'airline', color: '#3b82f6' },
     { name: 'Retail', id: 'retail', color: '#8b5cf6' },
-    { name: 'Telecom', id: 'telecom', color: '#059669' }
+    { name: 'Telecom', id: 'telecom', color: '#059669' },
+    { name: 'IT Access', id: 'it_access', color: '#f59e0b' }
   ]
 
   // Load submissions on component mount
@@ -221,11 +227,17 @@ const TrajectoryVisualizer = () => {
       
       // Fetch the JSON file from the submissions directory
       const response = await fetch(filePath)
-      
+
       if (!response.ok) {
         throw new Error(`Failed to load trajectory data: ${response.statusText}`)
       }
-      
+
+      // Check content type to avoid parsing HTML error pages as JSON
+      const contentType = response.headers.get('content-type')
+      if (!contentType || !contentType.includes('application/json')) {
+        throw new Error('Trajectory file not found or invalid format')
+      }
+
       const data = await response.json()
       setSelectedTrajectory(data)
       setSelectedTask(null)
@@ -486,7 +498,7 @@ const TrajectoryVisualizer = () => {
                 </p>
                 
                 <div className="domain-list">
-                  {domains.map((domain) => (
+                  {domainsList.map((domain) => (
                     <div 
                       key={domain.id}
                       className={`domain-item ${selectedDomain === domain.id ? 'selected' : ''}`}

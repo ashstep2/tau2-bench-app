@@ -1,5 +1,7 @@
 {
   "submissions": [
+    "baseline-llm-agent",
+    "verifying-access-agent",
     "claude-3-7-sonnet_anthropic_2024-06-20",
     "claude-opus-4_anthropic_2025-05-22",
     "claude-opus-4-1_anthropic_2025-01-15",

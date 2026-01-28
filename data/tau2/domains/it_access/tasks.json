@@ -1,0 +1,93 @@
+[
+  {
+    "id": "access_grant_task",
+    "description": {
+      "purpose": "Test agent's ability to grant access and verify the change",
+      "notes": "Agent should check user status, grant access, and verify"
+    },
+    "user_scenario": {
+      "persona": "Alice is a new engineer who needs access to team resources",
+      "instructions": "You are Alice Johnson (user_001). You need access to the Engineering Shared Drive (resource ID: res_001). Be polite and provide your user ID (user_001) and the resource ID (res_001) when asked."
+    },
+    "ticket": "I recently joined the Engineering team but I cannot access the shared drive (res_001). My user ID is user_001. Please grant me access.",
+    "evaluation_criteria": {
+      "actions": [
+        {
+          "action_id": "action_1",
+          "name": "get_user_info",
+          "arguments": {
+            "user_id": "user_001"
+          },
+          "info": "Agent should verify user exists and is active"
+        },
+        {
+          "action_id": "action_2",
+          "name": "grant_access",
+          "arguments": {
+            "user_id": "user_001",
+            "resource_id": "res_001",
+            "access_level": "read"
+          },
+          "info": "Agent should grant appropriate access"
+        },
+        {
+          "action_id": "action_3",
+          "name": "get_user_permissions",
+          "arguments": {
+            "user_id": "user_001"
+          },
+          "info": "Agent should verify the permission was granted"
+        }
+      ],
+      "nl_assertions": [
+        "The agent granted Alice access to the Engineering Shared Drive",
+        "The agent verified the access was successfully granted"
+      ]
+    }
+  },
+  {
+    "id": "access_revoke_task",
+    "description": {
+      "purpose": "Test agent's ability to revoke access from terminated employee",
+      "notes": "Agent should verify user is terminated, revoke access, and confirm"
+    },
+    "user_scenario": {
+      "persona": "Bob is a manager reporting a security concern about former employee access",
+      "instructions": "You are Bob Smith (user_002). You need Charlie Brown's (user_003) access to Project Alpha Folder (res_002) removed because he left the company. Provide Charlie's user ID (user_003) and the resource ID (res_002) when asked. Be clear about the security concern."
+    },
+    "ticket": "Charlie Brown (user_003) left the company last week. Please remove his access to the Project Alpha Folder (res_002) for security. This is urgent.",
+    "evaluation_criteria": {
+      "actions": [
+        {
+          "action_id": "action_1",
+          "name": "get_user_info",
+          "arguments": {
+            "user_id": "user_003"
+          },
+          "info": "Agent should verify Charlie is terminated"
+        },
+        {
+          "action_id": "action_2",
+          "name": "revoke_access",
+          "arguments": {
+            "user_id": "user_003",
+            "resource_id": "res_002"
+          },
+          "info": "Agent should revoke the access"
+        },
+        {
+          "action_id": "action_3",
+          "name": "get_user_permissions",
+          "arguments": {
+            "user_id": "user_003"
+          },
+          "info": "Agent should verify the permission was removed"
+        }
+      ],
+      "nl_assertions": [
+        "The agent revoked Charlie's access to Project Alpha Folder",
+        "The agent verified the access was successfully removed"
+      ]
+    }
+  }
+]

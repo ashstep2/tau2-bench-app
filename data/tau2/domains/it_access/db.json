@@ -1,0 +1,64 @@
+{
+  "users": {
+    "user_001": {
+      "user_id": "user_001",
+      "name": "Alice Johnson",
+      "email": "alice.johnson@company.com",
+      "department": "Engineering",
+      "role": "Software Engineer",
+      "status": "active"
+    },
+    "user_002": {
+      "user_id": "user_002",
+      "name": "Bob Smith",
+      "email": "bob.smith@company.com",
+      "department": "Marketing",
+      "role": "Marketing Manager",
+      "status": "active"
+    },
+    "user_003": {
+      "user_id": "user_003",
+      "name": "Charlie Brown",
+      "email": "charlie.brown@company.com",
+      "department": "Engineering",
+      "role": "Former Contractor",
+      "status": "terminated"
+    }
+  },
+  "resources": {
+    "res_001": {
+      "resource_id": "res_001",
+      "name": "Engineering Shared Drive",
+      "type": "drive",
+      "owner_department": "Engineering"
+    },
+    "res_002": {
+      "resource_id": "res_002",
+      "name": "Project Alpha Folder",
+      "type": "folder",
+      "owner_department": "Engineering"
+    },
+    "res_003": {
+      "resource_id": "res_003",
+      "name": "Marketing Assets",
+      "type": "folder",
+      "owner_department": "Marketing"
+    }
+  },
+  "permissions": {
+    "perm_001": {
+      "permission_id": "perm_001",
+      "user_id": "user_002",
+      "resource_id": "res_003",
+      "access_level": "write",
+      "granted_date": "2024-01-15"
+    },
+    "perm_002": {
+      "permission_id": "perm_002",
+      "user_id": "user_003",
+      "resource_id": "res_002",
+      "access_level": "read",
+      "granted_date": "2024-02-01"
+    }
+  }
+}

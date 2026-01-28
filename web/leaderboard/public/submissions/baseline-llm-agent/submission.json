@@ -1,0 +1,25 @@
+{
+  "model_name": "gpt-4o-mini (Baseline)",
+  "organization": "Portfolio Demo",
+  "submission_date": "2026-01-27",
+  "contact_info": {
+    "email": "myemail",
+    "name": "Ash",
+    "github": "ashstep2"
+  },
+  "results": {
+    "it_access": {
+      "pass_1": 87.5,
+      "pass_2": 75.0,
+      "pass_3": 62.5,
+      "pass_4": 50.0
+    }
+  },
+  "is_new": true,
+  "trajectories_available": true,
+  "methodology": {
+    "evaluation_date": "2026-01-27",
+    "user_simulator": "gpt-4.1",
+    "notes": "Baseline LLM agent on custom IT Access domain"
+  }
+}
