@@ -7,7 +7,12 @@
     },
     "user_scenario": {
       "persona": "Alice is a new engineer who needs access to team resources",
-      "instructions": "You are Alice Johnson (user_001). You need access to the Engineering Shared Drive (resource ID: res_001). Be polite and provide your user ID (user_001) and the resource ID (res_001) when asked."
+      "instructions": {
+        "domain": "it_access",
+        "reason_for_call": "Cannot access the Engineering Shared Drive after joining the team",
+        "known_info": "User ID: user_001\nResource ID: res_001 (Engineering Shared Drive)",
+        "task_instructions": "You are Alice Johnson (user_001). You need access to the Engineering Shared Drive (resource ID: res_001). Be polite and provide your user ID (user_001) and the resource ID (res_001) when asked."
+      }
     },
     "ticket": "I recently joined the Engineering team but I cannot access the shared drive (res_001). My user ID is user_001. Please grant me access.",
     "evaluation_criteria": {
@@ -53,7 +58,12 @@
     },
     "user_scenario": {
       "persona": "Bob is a manager reporting a security concern about former employee access",
-      "instructions": "You are Bob Smith (user_002). You need Charlie Brown's (user_003) access to Project Alpha Folder (res_002) removed because he left the company. Provide Charlie's user ID (user_003) and the resource ID (res_002) when asked. Be clear about the security concern."
+      "instructions": {
+        "domain": "it_access",
+        "reason_for_call": "Need to revoke former employee's access for security",
+        "known_info": "Charlie Brown's User ID: user_003\nResource ID: res_002 (Project Alpha Folder)\nCharlie left the company last week",
+        "task_instructions": "You are Bob Smith (user_002). You need Charlie Brown's (user_003) access to Project Alpha Folder (res_002) removed because he left the company. Provide Charlie's user ID (user_003) and the resource ID (res_002) when asked. Be clear about the security concern."
+      }
     },
     "ticket": "Charlie Brown (user_003) left the company last week. Please remove his access to the Project Alpha Folder (res_002) for security. This is urgent.",
     "evaluation_criteria": {
